@@ -1,0 +1,308 @@
+<div class="spatial">
+    <div data-dojo-type="dijit/MenuBar">
+        <div data-dojo-type="dijit/MenuBarItem" id="spatialArea" data-dojo-props="onClick:function(){area.style.display='block';line.style.display='none';point.style.display='none';}">
+            <span>城市区域</span>
+        </div>
+        <div data-dojo-type="dijit/MenuBarItem" id="spatfialline" data-dojo-props="onClick:function(){area.style.display='none';line.style.display='block';point.style.display='none';}">
+            <span>城市路径</span>
+        </div>
+        <div data-dojo-type="dijit/MenuBarItem" id="spatsialpoint" data-dojo-props="onClick:function(){area.style.display='none';line.style.display='none';point.style.display='block';}">
+            <span>城市地标</span>
+        </div>
+    </div>
+    <div class="content">
+    <div id="area">
+        <div class="spatialtitle">划分城市活动区域</div>
+        <label class="date" for ="areastartDate" style="margin-left: 5px">日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期:</label>
+        <input type="text" id="areastartDate" data-dojo-type="dijit/form/DateTextBox" required="true" value="2015-09-27" style="width: 72%;margin: 5px 10px"/><br>
+        <laber class="classify" for="groupunmb" style="margin-left:5px">分  组  数：</laber>
+        <input id="groupunmb" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="100"
+        data-dojo-props="constraints:{min:8,max:20000,places:0},
+        invalidMessage:'Please enter a numeric value.',
+        rangeMessage:'Invalid elevation.'" style="width: 72%;margin: 2px 10px"/>
+        <button class="layerbutton" style="margin: 3px 5px; width:100px;" data-dojo-attach-event="click:group">K-means</button>
+        <button class="layerbutton" style="margin: 3px 21px; width:100px;" data-dojo-attach-event="click:changeDeploy">修改边界</button>
+        <button class="layerbutton" style="margin: 3px 6px; width:100px;" data-dojo-attach-event="click:updataDeploy">保存边界</button>
+        <div class="spatialtitle">统计活动频率及动态变化</div>
+        <label class="date" for ="activeRegisonDate" style="margin-left: 5px">日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期:</label>
+        <input type="text" id="activeRegisonDate" data-dojo-type="dijit/form/DateTextBox" required="true" value="2015-09-27" style="width: 72%;margin: 5px 10px"/><br>
+        <label class="date" required="true" for="daynum" style="margin-left:width:72%;margin: 5px 5px ">阈&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值:</label>
+        <input id="activeNum" type="text" data-dojo-type="dijit/form/NumberTextBox" required="true" value="50" style="width: 75%"
+        data-dojo-props="constraints:{min:50,max:100000},
+        invalidMessage:'Please enter a numeric value.',rangeMessage:'50-100000'"/>
+        <button class="layerbutton" data-dojo-attach-event="click:activeRegison" style="margin: 2px 5px; width:100px;">开始分析</button>
+        <button class="layerbutton" id="clearactiveRegisonDate" style="margin: 2px 15px; width:100px;">清除地图</button>
+        <!-- <div class="spatialtitle">界定活动模式</div> -->
+    </div>
+    <div id="line">
+        <div class="spatialtitle">总体路况</div>
+        <label class="date" for ="linestartDate" style="margin-left: 5px">日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期:</label>
+        <input type="text" id="linestartDate" data-dojo-type="dijit/form/DateTextBox" required="true" value="2015-09-28" style="width: 76%;margin: 5px 10px"/><br>
+        <input class="input" type="radio" style="margin-left: 5px " data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="roadmap" id="roadmap" checked/>
+        <label class="road" for="roadmap" style="margin-left: 5px;color: black; ">环城高速</label>
+        <input class="input" type="radio" style="margin-left: 45px " data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="allroadmap" id="allroadmap"/>
+        <label class=" road" for=" allroadmap" style="margin-left: 5px;color: black; ">主要道路</label>
+        <div style="width: 86%; height: 5px"></div>
+        <button class="layerbutton" style="margin: 2px 5px; width:100px;" data-dojo-attach-event="click:starRoad">开始分析</button>
+        <button class="layerbutton" style="margin: 2px 15px; width:100px;" data-dojo-attach-point="cleanRoadmap">清除地图</button>
+
+        <div class="spatialtitle">全天路况</div>
+            <div id="hourRoad" data-dojo-type="dijit/TitlePane" title="单一时段路况图" style="width:auto;">
+                <div style="width: 86%; height: 5px"></div>
+                <label for="hourRoadDate" class="terminal" style="color: black; ">选择时间:</label> 
+                <input type="text" id="hourRoadDate" data-dojo-type="dijit/form/DateTextBox" required="true" value="2015-09-28"  style="width: 76%"  /> 
+                <div style="width: 88%; height: 8px"></div>
+                <label for="hourRoadTerminal" class="terminal" style="color: black; ">起始时刻:</label> 
+                <select data-dojo-type="dijit/form/FilteringSelect" id="hourRoadTerminal" data-dojo-props="style: { width:'76%' ,margin:'0px 0px 0px 0px'}">
+                    <option value="000">0:00</option>
+                    <option value="300">3:00</option>
+                    <option value="600" selected>6:00</option>
+                    <option value="900">9:00</option>
+                    <option value="1200">12:00</option>
+                    <option value="1500">15:00</option>
+                    <option value="1800">18:00</option>
+                    <option value="2100">21:00</option>
+                    <option value="2400">24:00</option>
+                </select>
+                <div style="width: 88%; height: 8px"></div>
+                <label for="hourRoadToTerminal" class="terminal" style="color: black; ">结束时刻:</label> 
+                <select data-dojo-type="dijit/form/FilteringSelect" id="hourRoadToTerminal" data-dojo-props="style: { width:'76%' ,margin:'0px 0px 0px 0px'}">
+                    <option value="000">0:00</option>
+                    <option value="300">3:00</option>
+                    <option value="600" selected>6:00</option>
+                    <option value="900">9:00</option>
+                    <option value="1200">12:00</option>
+                    <option value="1500">15:00</option>
+                    <option value="1800">18:00</option>
+                    <option value="2100">21:00</option>
+                    <option value="2400">24:00</option>
+                </select>
+                <div class="showbutton">
+                    <button class="layerbutton" style="margin: 4px 3px; width:100px;" data-dojo-attach-event="click:starhourRoad">开始分析</button>
+                    <button class="layerbutton" style="margin: 4px 15px; width:100px;" id="cleanHourmap">清除地图</button>
+                </div>
+            </div>
+            <div id="douHourroad" data-dojo-type="dijit/TitlePane" title="双时段路况图" style="width:auto;">
+
+                <label class="date" required="true" for="date">选择日期&nbsp;&nbsp;:</label>
+                    <input class="Date" type="text" name="date" value="2015-9-28" id="datedouHourroadOne" style="width: 70%" data-dojo-type="dijit/form/DateTextBox" required="true" /><br><br>
+                    <label class="time" for="selectTime" style="color: black; ">时间段:</label>
+                    <select data-dojo-type="dijit/form/FilteringSelect" id="douHourroadone" name="Time" data-dojo-attach-point="selectFIVE" data-dojo-props="style: { width:'38%' }">
+                        <option value="000-300">0:00-3:00</option>
+                        <option value="300-600" selected>3:00-6:00</option>
+                        <option value="600-900">6:00-9:00</option>
+                        <option value="900-1200">9:00-12:00</option>
+                        <option value="1200-1500">12:00-15:00</option>
+                        <option value="1500-1800">15:00-18:00</option>
+                        <option value="1800-2100">18:00-21:00</option>
+                        <option value="2100-2400">21:00-24:00</option>
+                    </select>
+                    <select data-dojo-type="dijit/form/FilteringSelect" id="douHourroadtwo" name="Time" data-dojo-attach-point="selectSIX" data-dojo-props="style: { width:'38%' }">
+                        <option value="000-300">0:00-3:00</option>
+                        <option value="300-600" selected>3:00-6:00</option>
+                        <option value="600-900">6:00-9:00</option>
+                        <option value="900-1200">9:00-12:00</option>
+                        <option value="1200-1500">12:00-15:00</option>
+                        <option value="1500-1800">15:00-18:00</option>
+                        <option value="1800-2100">18:00-21:00</option>
+                        <option value="2100-2400">21:00-24:00</option>
+                    </select>
+            <div class="showbutton">
+            <button class="layerbutton" style="margin: 3px 5px; width:94px;" data-dojo-attach-event="click:douhourRoad" type="button">开始分析</button>
+            <button class="layerbutton" style="margin: 3px 12px; width:94px;" id="layercompare" type="button">对比分析</button>
+            <button class="layerbutton" style="margin: 3px 4px; width:94px;" id="cleanDouHourmap" type="button">清除地图</button>
+            </div>
+            </div>
+            <div id="dayRoad" data-dojo-type="dijit/TitlePane" title="全天路况变化图" style="width:auto;">
+                <label class="date" required="true" for="date" style="margin-left: 5px">选择日期:</label>
+                <input class="Date" type="text" name="date" value="2015-9-28" id="datedayRoad" style="width: 76%" data-dojo-type="dijit/form/DateTextBox" required="true" />
+                <div id="LayerTimeSlider" style="width:300px; margin-left:20px " >
+                    <ol id="slidedayRoad" data-dojo-type="dijit/form/HorizontalRuleLabels" container="topDecoration" style="height:1.5em;font-size:75%;color:gray;">
+                        <li>0:0</li>
+                        <li>3:0</li>
+                        <li>6:0</li>
+                        <li>9:0</li>
+                        <li>12:0</li>
+                        <li>15:0</li>
+                        <li>18:0</li>
+                        <li>21:0</li>
+                        <li>24:0</li>
+                    </ol>
+                </div> 
+                <div class="showbutton">
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="layerbutton" style="margin: 4px 3px; width:100px;" data-dojo-attach-event="click:allhourRoad" type="button">开始分析</button>
+                            </td>
+                            <td>
+                                <button class="layerbutton" style="margin: 4px 15px; width:100px;" id="cleanAllhourLayer" type="button">清除地图</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+<!-- 分层地标提取-->
+    <div id="point">
+        <div class="spatialtitle">POI显著度计算</div>
+        <label class="date" required="true" for="date" style="margin-left: 5px">选择日期:</label>
+        <input class="Date" type="text" name="date" value="2015-09-28" id="datedaypoint" style="width:70%;margin: 5px 10px" data-dojo-type="dijit/form/DateTextBox" required="true" />
+        <label class="date" required="true" for="daynum" style="margin-left:width:70%;margin: 5px 5px ">选择天数&nbsp;&nbsp;:</label>
+        <input id="daynum" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="7" style="width: 75%"
+        data-dojo-props="constraints:{min:7,max:100000},
+        invalidMessage:'Please enter a numeric value.',rangeMessage:'7-100000'"/>
+        <label class="date" required="true" for="Threshold" style="margin-left: 5px">选择阈值&nbsp;&nbsp;:</label>
+        <input id="Threshold" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="10" style="width: 75%"
+        data-dojo-props="constraints:{min:1,max:100000},
+        invalidMessage:'Please enter a numeric value.',rangeMessage:'1-100000'"/>
+        <div align="center" style="font-size:12px;margin:5px auto;font-weight:bold">不同城区地标提取权重值</div>
+        <table class="weightedtab" border="1" style="width:360px;height:30px; ">
+        <thead>
+        <tr>
+            <th>城区</td>
+            <th>东城区</th>
+            <th>西城区</th>
+            <th>朝阳区</th>
+            <th>海淀区</th>
+            <th>丰台区</th>
+            <th>石景山区</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td align="center">权值</td>
+            <td><input id="weighted_1nmb" style="width:48px" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="1"
+        data-dojo-props="constraints:{min:0,max:1,pattern: '0.######'},
+        invalidMessage:'Please enter a numeric value.'"/></td>
+            <td><input id="weighted_2nmb" style="width:48px" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="1"
+        data-dojo-props="constraints:{min:0,max:1,pattern: '0.######'},
+        invalidMessage:'Please enter a numeric value.'"/></td>
+            <td><input id="weighted_3nmb" style="width:48px" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="1"
+        data-dojo-props="constraints:{min:0,max:1,pattern: '0.######'},
+        invalidMessage:'Please enter a numeric value.'"/></td>
+            <td><input id="weighted_4nmb" style="width:48px" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="1"
+        data-dojo-props="constraints:{min:0,max:1,pattern: '0.######'},
+        invalidMessage:'Please enter a numeric value.'"/></td>
+            <td><input id="weighted_5nmb" style="width:48px" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="1"
+        data-dojo-props="constraints:{min:0,max:1,pattern: '0.######'},
+        invalidMessage:'Please enter a numeric value.'"/></td>
+            <td><input id="weighted_6nmb" style="width:48px" type="text"
+        data-dojo-type="dijit/form/NumberTextBox"
+        required="true"
+        value="1"
+        data-dojo-props="constraints:{min:0,max:1,pattern: '0.######'},
+        invalidMessage:'Please enter a numeric value.'"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="showbutton">
+    <button class="layerbutton" style="margin: 4px 5px; width:120px;" type="button" data-dojo-attach-event="click:POIimClick">POI显著度计算</button>
+    <button class="layerbutton" style="margin: 4px 15px; width:120px;" type="button" data-dojo-attach-event="click:getLandmark">分层地标提取</button>
+    </div>
+    <table class="Imagery" border="1">
+        <tr align="center">
+        <th align="center">POI名</th>
+        <th align="center">签到人数</th>
+        <th align="center">签到排名</th>
+        <th align="center">POI显著度</th>
+        </tr>
+        <tr>
+            <th id="POI_1">POI</th>
+            <th id="chinkin_1">0</th>
+            <th id="ronking_1">1</th>
+            <th id="import_1">0</th>
+        </tr>
+        <tr>
+            <th id="POI_2">POI</th>
+            <th id="chinkin_2">0</th>
+            <th id="ronking_2">2</th>
+            <th id="import_2">0</th>
+        </tr>
+        <tr>
+            <th id="POI_3">POI</th>
+            <th id="chinkin_3">0</th>
+            <th id="ronking_3">3</th>
+            <th id="import_3">0</th>
+        </tr>
+        <tr>
+            <th id="POI_4">POI</th>
+            <th id="chinkin_4">0</th>
+            <th id="ronking_4">4</th>
+            <th id="import_4">0</th>
+        </tr>
+        <tr>
+            <th id="POI_5">POI</th>
+            <th id="chinkin_5">0</th>
+            <th id="ronking_5">5</th>
+            <th id="import_5">0</th>
+        </tr>
+        <tr>
+            <th id="POI_6">POI</th>
+            <th id="chinkin_6">0</th>
+            <th id="ronking_6">6</th>
+            <th id="import_6">0</th
+        </tr>
+        <tr>
+            <th id="POI_7">POI</th>
+            <th id="chinkin_7">0</th>
+            <th id="ronking_7">7</th>
+            <th id="import_7">0</th>
+        </tr>
+        <tr>
+            <th id="POI_8">POI</th>
+            <th id="chinkin_8">0</th>
+            <th id="ronking_8">8</th>
+            <th id="import_8">0</th>
+        </tr>
+        <tr>
+            <th id="POI_9">POI</th>
+            <th id="chinkin_9">0</th>
+            <th id="ronking_9">9</th>
+            <th id="import_9">0</th>
+        </tr>
+        <tr>
+            <th id="POI_10">POI</th>
+            <th id="chinkin_10">0</th>
+            <th id="ronking_10">10</th>
+            <th id="import_10">0</th>
+        </tr>
+    </table>
+    </div>
+    </div>
+    <div class="result">
+        <div id="resultLayer1" class ="resultLayer"></div>   
+        <div id="resultLayer2" class ="resultLayer"></div>   
+        <div id="resultLayer3" class ="resultLayer"></div>   
+        <div id="resultLayer4" class ="resultLayer"></div>   
+        <div id="resultLayer5" class ="resultLayer"></div>   
+        <div id="resultLayer6" class ="resultLayer"></div>   
+        <div id="resultLayer7" class ="resultLayer"></div>
+        <div id="resultLayer8" class ="resultLayer"></div>
+    </div>
+    <div id="stateBack" class="stateBack"></div>
+</div>

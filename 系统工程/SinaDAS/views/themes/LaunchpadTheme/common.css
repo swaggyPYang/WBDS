@@ -1,0 +1,7 @@
+@import url("panels/LaunchpadPanel/style.css");
+
+/**********About Edit Widget*************/
+.jimu-widget-edit .templatePicker {
+	bottom: 92px;
+}
+/**********End Edit Widget*************/

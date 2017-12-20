@@ -1,0 +1,11 @@
+.container{
+	background:#454545;
+	opacity:0.8;
+}
+label{
+	color: #FFFFFF;
+	margin:5px 5px 0px 2px;
+}
+input{
+	margin:5px 0px 0px 5px;
+}

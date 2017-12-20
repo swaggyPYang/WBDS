@@ -1,0 +1,34 @@
+<div class="flowmodule">
+    <div id="flowTab">
+        <div class="flowmodulecaption">城市通勤规律空间分析</div><br>
+        <label class="flowdate" required="true" style="margin-left: 5px">日期:</label>
+        <input  type="text" id="flowDate" data-dojo-type="dijit/form/DateTextBox" required="true" value="2015-09-28"  style="width: 65%;margin: 5px 0px" /><br>
+        <label  class="flowdate" for="AnalysisTimeFrom" >时间：</label> 
+        <select data-dojo-type="dijit/form/FilteringSelect" id="AnalysisTimeFrom" data-dojo-props="style: { width:'100px' ,margin:'0px 0px 0px 5px'}">
+            <option value="000">0:00</option>
+            <option value="300">3:00</option>
+            <option value="600" selected>6:00</option>
+            <option value="900">9:00</option>
+            <option value="1200">12:00</option>
+            <option value="1500">15:00</option>
+            <option value="1800">18:00</option>
+            <option value="2100">21:00</option>
+            <option value="2400">24:00</option>
+        </select>
+        <label for="AnalysisTimeTo" class="text">~</label> 
+        <select data-dojo-type="dijit/form/FilteringSelect" id="AnalysisTimeTo" name="AnalysisTimeTo" data-dojo-props="style: { width:'100px' ,margin:'0px 0px 0px 5px'}">
+             <option value="000">0:00</option>
+            <option value="300">3:00</option>
+            <option value="600">6:00</option>
+            <option value="900" selected>9:00</option>
+            <option value="1200">12:00</option>
+            <option value="1500">15:00</option>
+            <option value="1800">18:00</option>
+            <option value="2100">21:00</option>
+            <option value="2400">24:00</option>
+        </select><br>
+        <button class="button" style="margin: 2px 5px; width:100px;" type="button" data-dojo-attach-event="click:GetFlows">开始分析</button>
+        <button class="button" style="margin: 2px 20px; width:100px;" type="button" data-dojo-attach-event="click:cleanGetFlows">清除选择</button>
+    </div>
+</div>    
+

@@ -1,0 +1,58 @@
+<div class="analysisArea">
+    <a title="分析区域选择工具"><img id="img" src="images/select.png"></a>
+    <div id="tool" data-dojo-attach-point="tool"  style="visibility: none;">
+    <table id="title" data-dojo-attach-point="WeigetName">
+        <tr>
+            <td>分析区域选择工具</td>
+        </tr>
+    </table>
+    <table id="table">
+            <tr>
+                <td style="width:50%" align="center">
+                    <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="analysisRadioONE" id="analysisRadioONE" name="value" checked /> 
+                    <label for="analysisRadioONE" class="titlename">城市区划</label>
+                </td>
+                <td style="width:50%" align="center">
+                    <select data-dojo-type="dijit/form/Select" data-dojo-attach-point="selectONE" id="selectONE" 
+                        data-dojo-props="style: { width: '80%' }">
+                        <option value="北京市" >北京市区</option>
+                        <option value="东城区">东城区</option>
+                        <option value="西城区">西城区</option>
+                        <option value="朝阳区">朝阳区</option>
+                        <option value="海淀区">海淀区</option>
+                        <option value="丰台区">丰台区</option>
+                        <option value="石景山区">石景山区</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:50%" align="center">
+                    <input type="radio" data-dojo-type="dijit/form/RadioButton" data-dojo-attach-point="analysisRadioTWO" id="analysisRadioTWO"  name="value" />
+                    <label for="analysisRadioTWO" class="titlename">自绘图形</label>
+                </td>
+                <td style="width:50%" align="center">
+                    <select data-dojo-type="dijit/form/Select" data-dojo-attach-point="selectTWO" id="selectTWO"
+                        data-dojo-props="style: { width: '80%' }">
+                            <option value="FreehandPolygon" selected>自由绘制</option>
+                            <option value="Circle">圆形</option>
+                            <option value="Polygon">多边形</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <button
+                        class="button-primary"
+                        data-dojo-attach-event="click:startSearch" 
+                        >确认选择</button>
+                </td>
+                <td align="center">
+                    <button
+                        class="button-caution"
+                        data-dojo-attach-event="click:cleanMap"
+                        >清除选择</button>
+                </td>
+            </tr>
+    </table>
+    </div>
+</div>

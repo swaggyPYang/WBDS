@@ -1,0 +1,243 @@
+<div>
+    <div data-dojo-type="dijit/MenuBar">
+        <div data-dojo-type="dijit/PopupMenuBarItem" data-dojo-attach-point="change">
+            <span>总体动态</span>
+            <div data-dojo-type="dijit/DropDownMenu" id="featureMenu">
+                <div data-dojo-type="dijit/MenuItem" id="overallCharacter" data-dojo-attach-point="overallCharacter" data-dojo-props=" onClick:function(){overallTab.style.display='block';dynamicTab.style.display='none';genderTab.style.display='none';ageTab.style.display='none';}">总体特征</div>
+                <div data-dojo-type="dijit/MenuItem" id="dynamicChange" data-dojo-attach-point="dynamicChange" data-dojo-props="onClick:function(){dynamicTab.style.display='block';overallTab.style.display='none';genderTab.style.display='none';ageTab.style.display='none';}">动态变化</div>
+            </div>
+        </div>
+        <div data-dojo-type="dijit/PopupMenuBarItem">   
+            <span>动态差异</span>
+            <div data-dojo-type="dijit/DropDownMenu" id="contrastMenu">
+                <div data-dojo-type="dijit/MenuItem" id="genderDifference" data-dojo-attach-point="genderDifference" data-dojo-props="onClick:function(){overallTab.style.display='none';dynamicTab.style.display='none';genderTab.style.display='block';ageTab.style.display='none';}">性别差异</div>
+                <div data-dojo-type="dijit/MenuItem" id=" ageDifference" data-dojo-attach-point=" ageDifference" data-dojo-props="onClick:function(){overallTab.style.display='none';dynamicTab.style.display='none';genderTab.style.display='none';ageTab.style.display='block';}">年龄差异</div>
+            </div>
+        </div>
+    </div>
+    <div class="condition">
+        <div id="overallTab">
+            <div class="caption">总体特征</div>
+            <label class="date" for="Fromdate1" style="margin-left: 5px" >开始日期:</label>
+            <input type="text" id="SelectAllDate" data-dojo-type="dijit/form/DateTextBox" required="true" value="2015-09-28" style="width: 74%;margin: 5px 10px"/><br>
+            <label class="selectzs" style="margin-left: 5px">请选择分析周数:</label>
+            <select data-dojo-type="dijit/form/Select">
+                <option value="oneweek">一周</option>
+            </select>
+            <div class="showbutton">
+                <button class="button" style="margin: 2px 5px; width:100px;" type="button" data-dojo-attach-event="click:groupDataHmd">开始分析</button>
+                <button class="button" style="margin: 2px 20px; width:100px;" type="button"   id="CleanAllLayerData">清除选择</button>
+            </div>
+            <div id="LayerdateSlider" style="width:300px; margin-left:20px " >
+                <ol id="dayol" data-dojo-type="dijit/form/HorizontalRuleLabels" container="topDecoration" style="height:1.5em;font-size:75%;color:gray;">
+                    <li id="oneDay">9/28</li>
+                    <li id="twoDay">9/29</li>
+                    <li id="threeDay">9/30</li>
+                    <li id="fourDay">10/1</li>
+                    <li id="fiveDay">10/2</li>
+                    <li id="sixDay">10/3</li>
+                    <li id="sevenDay">10/4</li>
+                </ol>
+            </div>       
+            <div class="showtable">
+                <div align="center" style="font-size:12px;font-weight:bold;margin:5px auto">签到用户统计图表</div>
+                <table class="urbantable" id="overallTable" border="1" style="width:360px;height:30px; ">
+                    <tr align="center">
+                        <td align="center">日期</td>
+                        <td id="UdataA">null</td>
+                        <td id="UdataB">null</td>
+                        <td id="UdataC">null</td>
+                        <td id="UdataD">null</td>
+                        <td id="UdataE">null</td>
+                        <td id="UdataF">null</td>
+                        <td id="UdataG">null</td>
+                    </tr>
+                    <tr align="center">
+                        <td align="center">数量</td>
+                        <td id="UnumA">null</td>
+                        <td id="UnumB">null</td>
+                        <td id="UnumC">null</td>
+                        <td id="UnumD">null</td>
+                        <td id="UnumE">null</td>
+                        <td id="UnumF">null</td>
+                        <td id="UnumG">null</td>
+                    </tr>
+                </table>
+            </div><br>
+            <div align="center" style="font-size:12px;font-weight:bold;margin:5px auto">签到用户统计折线图</div>
+            <div class="showchar" id="overallChart"></div>
+        </div> 
+        <div id="dynamicTab">
+            <div class="caption">动态变化</div>
+                <div data-dojo-type="dijit/TitlePane" title="单一时段签到热度图" style="width:auto>
+                    <label for="fromDate" class="terminal">选择日期:</label> 
+                    <input style="width: 74%;margin: 2px 10px"  type="text" id="DynamicStartDate" value="2015-09-28" name="fromDate"data-dojo-type="dijit/form/DateTextBox" required="true" /> </br>
+                    <div style="width: 86%; height: 5px"></div>
+                    <label for="fromDate" class="terminal">开始时间:</label>
+                    <select data-dojo-type="dijit/form/FilteringSelect" id="selectDynamicFromTerminal"  name="myFromTime" data-dojo-props="style: { width:'74%' ,margin:'0px 0px 0px 10px'}">
+                        <option value="000">00:00</option>
+                        <option value="300">03:00</option>
+                        <option value="600" selected>06:00</option>
+                        <option value="900">09:00</option>
+                        <option value="1200">12:00</option>
+                        <option value="1500">15:00</option>
+                        <option value="1800">18:00</option>
+                        <option value="2100">21:00</option>
+                        <option value="2400">24:00</option>
+                    </select>
+                    <div style="width: 86%; height: 8px"></div>
+                    <label for="fromDate" class="terminal">结束时间:</label>
+                    <select data-dojo-type="dijit/form/FilteringSelect" id="selectDynamicToTerminal"  name="myToTime" data-dojo-props="style: { width:'74%' ,margin:'0px 0px 0px 10px'}">
+                        <option value="000">00:00</option>
+                        <option value="300">03:00</option>
+                        <option value="600">06:00</option>
+                        <option value="900" selected>09:00</option>
+                        <option value="1200">12:00</option>
+                        <option value="1500">15:00</option>
+                        <option value="1800">18:00</option>
+                        <option value="2100">21:00</option>
+                        <option value="2400">24:00</option>
+                    </select>
+                    <div class="showbutton">
+                        <button class="button" style="margin: 2px 5px; width:100px;" data-dojo-attach-event="click:startTerminal"  type="button">开始分析</button>
+                        <button class="button" style="margin: 2px 20px; width:100px;" id="cleanTerminalMap" type="button">清除地图</button>
+                    </div>
+                </div>
+                <div data-dojo-type="dijit/TitlePane" title="双时段签到热度对比图" selected="true" style="width:auto">
+                    <label class="date" required="true" for="date" style="margin-left: 5px">选择日期:</label>
+                    <input class="Date" type="text" name="date"  id="DynamicDoubleDate"  value="2015-09-28" style="width: 75%;margin: 0px" data-dojo-type="dijit/form/DateTextBox" required="true" /><br><br>
+                    <label class="time" for="selectTime" style="margin-left: 5px">双时间段:</label>
+                    <select data-dojo-type="dijit/form/FilteringSelect" id="selectDynamicOneTime" name="Time" data-dojo-attach-point="selectFIVE" data-dojo-props="style: { width:'37%' }">
+                        <option value="000-300">00:00-03:00</option>
+                        <option value="300-600">03:00-06:00</option>
+                        <option value="600-900" selected>06:00-09:00</option>
+                        <option value="900-1200">09:00-12:00</option>
+                        <option value="1200-1500">12:00-15:00</option>
+                        <option value="1500-1800">15:00-18:00</option>
+                        <option value="1800-2100">18:00-21:00</option>
+                        <option value="2100-2400">21:00-24:00</option>
+                    </select>
+                    <select data-dojo-type="dijit/form/FilteringSelect" id="selectDynamicTwoTime" name="Time" data-dojo-attach-point="selectSIX" data-dojo-props="style: { width:'37%'}">
+                        <option value="000-300">00:00-03:00</option>
+                        <option value="300-600" >03:00-06:00</option>
+                        <option value="600-900" >06:00-09:00</option>
+                        <option value="900-1200" selected>09:00-12:00</option>
+                        <option value="1200-1500">12:00-15:00</option>
+                        <option value="1500-1800">15:00-18:00</option>
+                        <option value="1800-2100">18:00-21:00</option>
+                        <option value="2100-2400">21:00-24:00</option>
+                    </select>
+                    <div class="showbutton">
+                        <button class="button" style="margin: 3px 5px; width:98px;" data-dojo-attach-event="click:startDoubleTime"  type="button">开始分析</button>
+                        <button class="button" style="margin: 3px 8px; width:98px;" id="twocompaer"  type="button">对比分析</button>
+                        <button class="button" style="margin: 3px 4px; width:98px;" id="cleanLayerSwipe"  type="button">清除地图</button>
+                    </div>
+                </div>
+                <div data-dojo-type="dijit/TitlePane" title="全天签到热度分析" style="width:auto">
+                    <label class="date" required="true" for="date" style="margin-left: 5px">选择日期:</label>
+                    <input class="Date" type="text" name="date" value="2015-09-28"  id="DynamicAllDate"  style="width: 74%" data-dojo-type="dijit/form/DateTextBox" required="true" />
+                    <div class="showbutton">
+                        <button class="button" style="margin: 2px 5px; width:100px;" data-dojo-attach-event="click:startAllTime"  type="button">开始分析</button>
+                        <button class="button" style="margin: 2px 20px; width:100px;" id="cleanAllTimeLayer" type="button">清除地图</button>
+                    </div>
+                    <div id="LayerGridTimeSlider" style="width:300px; margin-left:20px " >
+                        <ol id="LayerGrid" data-dojo-type="dijit/form/HorizontalRuleLabels" container="topDecoration" style="height:1.5em;font-size:75%;color:gray;">
+                            <li>0:0</li>
+                            <li>3:0</li>
+                            <li>6:0</li>
+                            <li>9:0</li>
+                            <li>12:0</li>
+                            <li>15:0</li>
+                            <li>18:0</li>
+                            <li>21:0</li>
+                            <li>24:0</li>
+                        </ol>
+                    </div> 
+                </div>
+        </div>
+        <div id="genderTab">
+            <div class="caption">性别差异</div>
+            <label class="date" required="true" for="date" style="margin-left: 5px">日期&nbsp;&nbsp;&nbsp;:</label>
+            <input class="Date" id="genderDate" style="width: 74%;margin:5px 0px" value="2015-09-28" data-dojo-type="dijit/form/DateTextBox" required="true" /><br>
+            <label class="time"  style="margin-left: 5px">时间段:</label>
+            <select data-dojo-type="dijit/form/FilteringSelect" id="genderTime" data-dojo-props="style: { width:'74%' }">
+                <option value="000-300">00:00-03:00</option>
+                <option value="300-600">03:00-06:00</option>
+                <option value="600-900" selected>06:00-09:00</option>
+                <option value="900-1200" selected>09:00-12:00</option>
+                <option value="1200-1500">12:00-15:00</option>
+                <option value="1500-1800">15:00-18:00</option>
+                <option value="1800-2100">18:00-21:00</option>
+                <option value="2100-2400">21:00-24:00</option>
+            </select>
+            <div class="showbutton">
+                <button class="button" style="margin: 3px 5px; width:98px;" data-dojo-attach-event="click:startGenderAna"  type="button">开始分析</button>
+                <button class="button" style="margin: 3px 12px; width:98px;" id="SexcompaerLayer" type="button">对比分析</button>
+                <button class="button" style="margin: 3px 4px; width:98px;" id="sexcleanLayerSwipe" type="button">清除地图</button>
+            </div>
+        </div>
+        <div id="ageTab">
+            <div class="caption">年龄差异</div>
+            <label class="date" for="Fromdate3">开始日期:</label>
+            <input  type="text" id="ageDate" name="fromDate" data-dojo-type="dijit/form/DateTextBox" value="2015-09-28" required="true" onChange="myToDate.constraints.min =arguments[0];" style="width: 74%;margin: 5px 0px" /><br>
+            <label class="time" for="selectTime">时 间 段 : </label>
+            <select data-dojo-type="dijit/form/FilteringSelect" id="ageTime" name="Time" data-dojo-attach-point="selectTHREE" data-dojo-props="style: { width:'74%'}">
+                <option value="000-300">0:00-3:00</option>
+                <option value="300-600">3:00-6:00</option>
+                <option value="600-900" selected>6:00-9:00</option>
+                <option value="900-1200" selected>9:00-12:00</option>
+                <option value="1200-1500">12:00-15:00</option>
+                <option value="1500-1800">15:00-18:00</option>
+                <option value="1800-2100">18:00-21:00</option>
+                <option value="2100-2400">21:00-24:00</option>
+            </select>
+            <div class="showbutton">
+                <button class="button" style="margin: 2px 5px; width:100px;" data-dojo-attach-event="click:startAgeTime"  type="button">开始分析</button>
+                <button class="button" style="margin: 2px 20px; width:100px;" id="cleanageAgeLayer" type="button">清除地图</button>
+            </div>
+            <div id="ageTimeSlider" style="width:300px; margin-left:20px " >
+                <ol id="ageSlider" data-dojo-type="dijit/form/HorizontalRuleLabels" container="topDecoration" style="height:1.5em;font-size:75%;color:gray;">
+                    <li>11~16</li>
+                    <li>17~23</li>
+                    <li>24~33</li>
+                    <li>34~45</li>
+                    <li>46~75</li>
+                </ol>
+            </div> 
+            <div class="showtable">
+                <div align="center" style="font-size:12px;margin:5px auto;font-weight:bold">年龄差异统计图表</div>
+                <table class="urbantable" id="overallTable" border="1" style="width:360px;height:30px; ">
+                    <tr align="center">
+                        <td align="center">年龄</td>
+                        <td id="UageA">11~16</td>
+                        <td id="UageB">17~23</td>
+                        <td id="UageC">24~33</td>
+                        <td id="UageD">34~45</td>
+                        <td id="UageE">>45</td>
+                    </tr>
+                    <tr>
+                        <td align="center">数量</td>
+                        <td id="UagenumA">NULL</td>
+                        <td id="UagenumB">NULL</td>
+                        <td id="UagenumC">NULL</td>
+                        <td id="UagenumD">NULL</td>
+                        <td id="UagenumE">NULL</td>
+                    </tr>
+                </table>
+            </div><br>
+            <div align="center" style="font-size:12px;margin:5px auto;font-weight:bold">年龄差异统计饼图</div>
+            <div align="center" class="showchar" id="urbanageChart"></div>
+        </div>
+    </div>
+    <div class="result">
+        <div id="resultLayer1" class ="resultLayer"></div>   
+        <div id="resultLayer2" class ="resultLayer"></div>   
+        <div id="resultLayer3" class ="resultLayer"></div>   
+        <div id="resultLayer4" class ="resultLayer"></div>   
+        <div id="resultLayer5" class ="resultLayer"></div>   
+        <div id="resultLayer6" class ="resultLayer"></div>   
+        <div id="resultLayer7" class ="resultLayer"></div>
+        <div id="resultLayer8" class ="resultLayer"></div>
+    </div>
+    <div id="stateBack" class="stateBack"></div>
+</div> 

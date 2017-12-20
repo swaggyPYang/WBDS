@@ -1,0 +1,39 @@
+.label{
+	 color: black;
+	 font-size: 10px;
+ }
+table{ 
+table-layout:fixed; 
+empty-cells:show; 
+border-collapse: collapse; 
+margin:5px auto; 
+} 
+.table td{
+	text-align: center;
+	margin-top: 5px;
+}
+.pointform td{ 
+height:30px; 
+width: 30px;
+text-align: center;
+} 
+.pointform{ 
+border:1px solid #cad9ea; 
+color:#666; 
+} 
+.pointform th { 
+background-repeat:repeat-x; 
+background-color: #f0f0f0;
+height:30px; 
+width: 20px;
+} 
+.pointform td,.pointform th{ 
+border:1px solid #cad9ea; 
+padding:0 1em 0; 
+} 
+.chart{
+height:300px; 
+width: 350px;
+margin: 5px auto;	
+padding: auto,16px;
+}

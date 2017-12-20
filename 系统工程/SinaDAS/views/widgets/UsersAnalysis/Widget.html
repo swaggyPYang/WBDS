@@ -1,0 +1,171 @@
+<div class="useranalysis">
+    <div data-dojo-type="dijit/MenuBar">
+        <div data-dojo-type="dijit/PopupMenuBarItem">
+            <span>年龄统计</span>
+            <div data-dojo-type="dijit/DropDownMenu">
+                <div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){agestatistics.style.display='block';mainpopulation.style.display='none';sexstatistics.style.display='none';populationstatistics.style.display='none';}">各年龄段统计</div>
+                <div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){agestatistics.style.display='none';mainpopulation.style.display='block';sexstatistics.style.display='none';populationstatistics.style.display='none';}">主要人群统计</div>
+            </div>
+        </div>
+    <div data-dojo-type="dijit/MenuBarItem" data-dojo-props="onClick:function(){agestatistics.style.display='none';mainpopulation.style.display='none';sexstatistics.style.display='block';populationstatistics.style.display='none';}">
+        <span>性别统计</span>
+    </div>
+    <div data-dojo-type="dijit/MenuBarItem" data-dojo-props="onClick:function(){agestatistics.style.display='none';mainpopulation.style.display='none';sexstatistics.style.display='none';populationstatistics.style.display='block';}">
+        <span>城区统计</span>
+    </div>
+    </div>
+    <div>
+        <div class="substance">
+            <div id="agestatistics">
+            <div class="headline">各年龄段统计</div>
+            <div>
+                <button class="Button" style="margin: 5px 37px; width:100px;" data-dojo-attach-event="click:agequery">显示图层</button>
+                <button class="Button" style="margin: 5px 30px; width:100px;" data-dojo-attach-event="click:clean">清除图层</button>
+            </div>
+            <table class="table">
+                <tr>
+                    <td>年龄统计图表</td>
+                </tr>
+            </table>
+            <table  class="pointform" width="95%">
+                <thead>
+                    <tr>
+                        <th>总数量</th>
+                        <th>11-16(岁)</th>
+                        <th>17-23(岁)</th>
+                        <th>24-33(岁)</th>
+                        <th>34-45(岁)</th>
+                        <th>46岁以上</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="AgeGrouptotal"></td>
+                        <td id="AgeGroupone"></td>
+                        <td id="AgeGrouptwo"></td>
+                        <td id="AgeGroupthree"></td>
+                        <td id="AgeGroupfour"></td>
+                        <td id="AgeGroupfive"></td>
+                    </tr>
+                </tbody>    
+            </table>
+            <div>
+            <table class="table">
+                <tr>
+                    <td>年龄统计图</td>
+                </tr>
+            </table>
+            </div>
+            <div class="chart" id="chart1"></div>
+            </div>
+            <div id="mainpopulation">
+            <div class="headline">主要人群统计</div>
+            <div>
+                <button class="Button" style="margin: 5px 39px; width:110px;" data-dojo-attach-event="click:mainagequery">显示图层</button>
+                <button class="Button" style="margin: 5px 30px; width:110px;" data-dojo-attach-event="click:clean">清除图层</button>
+            </div>
+            <table class="table">
+                <tr>
+                    <td>主要人群统计图表</td>
+                </tr>
+            </table>
+            <table class="pointform" width="95%">
+                <thead>
+                    <tr>
+                        <th>总数量</th>
+                        <th>17-23<br>(岁)</th>
+                        <th>24-33<br>(岁)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="MainAgeGrouptotal"></td>
+                        <td id="MainAgeGroupone"></td>
+                        <td id="MainAgeGrouptwo"></td>
+                    </tr>
+                </tbody>    
+            </table>
+            <div>
+            <table class="table">
+                <tr>
+                    <td>主要人群统计图</td>
+                </tr>
+            </table>
+            </div>
+            <div class="chart" id="chart2"></div>
+            </div>
+            <div id="sexstatistics">
+            <div class="headline">性别统计</div>
+            <div>
+                <button class="Button" style="margin: 5px 39px; width:110px;" data-dojo-attach-event="click:genderquery">显示图层</button>
+                <button class="Button" style="margin: 5px 30px; width:110px;" data-dojo-attach-event="click:clean">清除图层</button>
+            </div>
+            <table class="table">
+                <tr>
+                    <td>性别统计图表</td>
+                </tr>
+            </table>
+            <table class="pointform" width="95%">
+                <thead>
+                    <tr>
+                        <th>总数量</th>
+                        <th>男性数量</th>
+                        <th>女性数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="total"></td>
+                        <td id="mancount"></td>
+                        <td id="femalecount"></td>
+                    </tr>
+                </tbody>    
+            </table>
+            <div>
+            <table class="table">
+                <tr>
+                    <td>性别统计图</td>
+                </tr>
+            </table>
+            </div>
+            <div class="chart" id="chart3"></div>
+            </div>
+            <div id="populationstatistics">
+            <div class="headline">城区统计</div>
+            <div>
+                <button class="Button" style="margin: 5px 39px; width:110px;" data-dojo-attach-event="click:populationquery">显示图层</button>
+                <button class="Button" style="margin: 5px 30px; width:110px;" data-dojo-attach-event="click:clean">清除图层</button>
+            </div>
+            <table class="table">
+                <tr>
+                    <td>人口数量统计图表</td>
+                </tr>
+            </table>
+            <table class="pointform" width="95%">
+                <thead>
+                    <tr>
+                        <th>总数量</th>
+                        <th>主城区</th>
+                        <th>外围城区</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="populationareatotal"></td>
+                        <td id="populationarea"></td>
+                        <td id="populationcount"></td>
+                    </tr>
+                </tbody>    
+            </table>
+            <div>
+            <table class="table">
+                <tr>
+                    <td>人口数量统计图</td>
+                </tr>
+            </table>
+            </div>
+            <div class="chart" id="chart4"></div>
+            </div>
+        </div>
+    </div>
+</div> 

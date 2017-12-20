@@ -1,0 +1,86 @@
+/*修改所有widget的颜色，使其统一*/
+.date{
+	color: black;
+}
+.spatialtitle{
+	background: #007AC2;
+	height: 25px;
+	color:white;
+	font-size:15px;
+    text-align: center;
+    padding-top: 4px;
+}
+.content{
+    margin-top: 5px;
+}
+.layerbutton{
+	border-style: solid;
+    border-width: 1px; 
+    width:110px;
+    padding: 4px 12px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    box-shadow: none;
+    line-height: 20px;
+    cursor: pointer;
+    border-color: #d0d0d0;
+    background: #f5f5f5;
+    text-align: center;
+    text-shadow: none;
+    color: #696969;
+}
+.layerbutton:hover{
+	background: #E8E8E8;
+}
+.weightedtab{
+    border:1px solid #cad9ea; 
+    color:#666; 
+    margin-left: 5px;
+    table-layout:fixed; 
+    empty-cells:show; 
+    border-collapse: collapse; 
+} 
+.weightedtab td{
+    height:30px; 
+    width: 30px;
+}
+.weightedtab th { 
+background-repeat:repeat-x; 
+background-color: #f0f0f0;
+height:10px; 
+width: 30px;
+font-weight: normal;
+font-size: 12px;
+border:1px solid #cad9ea; 
+padding:0 1em 0; 
+} 
+.Imagery{ 
+margin-left: 5px; 
+} 
+.Imagery th { 
+background-repeat:repeat-x; 
+background-color: #f0f0f0;
+height:30px; 
+width: 90px;
+font-weight: normal;
+font-size: 12px;
+border:1px solid #cad9ea; 
+padding:0 1em 0; 
+} 
+.stateBack {
+    background-color: #FFFFFF;
+    color: #000000;
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 0px;
+    border: solid 0.5px #ededed;
+    width: 370px;
+}
+.result{
+    background-color: #FFFFFF;
+    color: #000000;
+    text-align: left;
+    font-weight: bold;
+    border: solid 0.5px #ededed;    
+    width: 370px;   
+}

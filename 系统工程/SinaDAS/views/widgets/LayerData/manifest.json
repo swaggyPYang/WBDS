@@ -1,0 +1,14 @@
+{
+  "name":"LayerData",
+  "platform":"HTML",
+  "version":"0.0.1",
+  "author":"li",
+  "description":"",
+  "copyright":"li exclusive",
+  "license":"http://www.apche.org/licenses/LICENSE-2.0",
+  "properties": {
+     "inPanel": false,
+    "hasUIFile": false,
+    "hasConfig": false
+  }
+}
